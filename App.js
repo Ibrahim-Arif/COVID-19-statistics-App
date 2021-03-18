@@ -5,16 +5,18 @@ import { MaterialCommunityIcons, Fontisto } from "@expo/vector-icons";
 
 import HomeScreen from "./app/screens/HomeScreen";
 import ListingScreen from "./app/screens/ListingScreen";
+import colors from "./app/config/colors";
+import navigationTheme from "./app/config/navigationTheme";
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       <Tab.Navigator
-        activeColor="#7790c5"
-        barStyle={{ backgroundColor: "#f1f5ff" }}
-        inactiveColor="#c1cce5"
+        activeColor={colors.primary}
+        barStyle={{ backgroundColor: colors.background }}
+        inactiveColor={colors.primarylight}
         initialRouteName="Home"
         shifting={true}
       >
