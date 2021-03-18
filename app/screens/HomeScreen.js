@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Image } from "react-native";
 
 import colors from "../config/colors";
 import ListCard from "../components/ListCard";
 import MyButton from "../components/MyButton";
+import covidApi from "../api/covidApi";
 
 function HomeScreen({ navigation }) {
+  const [data, setData] = useState({});
+
+  const getPakistan = async () => {
+    const result = await covidApi.get("/country/pakistan");
+    setData(result.data[result.data.length - 1]);
+  };
+
+  useEffect(() => {
+    getPakistan();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image source={require("../assets/icon.jpg")} style={styles.icon} />
@@ -15,10 +27,10 @@ function HomeScreen({ navigation }) {
           color="#f9c500"
           style={{ width: "90%" }}
           fontSize={24}
-          country="pakistan"
-          totalConfirmed="40,000"
-          totalRecovered="25,000"
-          totalDeaths="1100"
+          country={"Pakistan"}
+          totalConfirmed={data.Confirmed}
+          totalRecovered={data.Recovered}
+          totalDeaths={data.Deaths}
         />
       </View>
 
