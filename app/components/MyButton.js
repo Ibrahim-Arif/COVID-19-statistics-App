@@ -6,16 +6,11 @@ function MyButton({ title = "Button", onPress, style, color = "#000" }) {
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      style={[styles.container, style]}
+      style={[styles.container, { borderColor: color }, style]}
       onPress={onPress}
     >
       <Text style={[styles.text, { color: color }]}>{title}</Text>
-      <AntDesign
-        name="arrowright"
-        size={24}
-        color={color}
-        style={{ marginLeft: 50 }}
-      />
+      <AntDesign name="arrowright" size={24} color={color} />
     </TouchableOpacity>
   );
 }
@@ -23,9 +18,10 @@ function MyButton({ title = "Button", onPress, style, color = "#000" }) {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 20,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     width: "100%",
     borderWidth: 3,
     flexDirection: "row",

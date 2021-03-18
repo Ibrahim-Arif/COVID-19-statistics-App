@@ -6,7 +6,7 @@ import MyButton from "../components/MyButton";
 import Title from "../components/Title";
 import colors from "../config/colors";
 
-function HomeScreen({}) {
+function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Image source={require("../assets/icon.jpg")} style={styles.icon} />
@@ -19,7 +19,12 @@ function HomeScreen({}) {
         totalRecovered="25,000"
         totalDeaths="1100"
       />
-      <MyButton title="Browse All Countries" color={colors.primary} />
+      <MyButton
+        title="Browse All Countries"
+        color={colors.primary}
+        style={{ alignSelf: "center", width: "80%", marginTop: 20 }}
+        onPress={() => navigation.navigate("Listings")}
+      />
     </View>
   );
 }
