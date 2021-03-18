@@ -1,30 +1,35 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
+
+import colors from "../config/colors";
 import ListCard from "../components/ListCard";
 import MyButton from "../components/MyButton";
-
-import Title from "../components/Title";
-import colors from "../config/colors";
 
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Image source={require("../assets/icon.jpg")} style={styles.icon} />
-      <Title>COVID-19 in Pakistan</Title>
-      <ListCard
-        color={colors.primary}
-        style={{ alignSelf: "center", marginTop: 20, width: "60%" }}
-        title="pakistan"
-        totalConfirmed="40,000"
-        totalRecovered="25,000"
-        totalDeaths="1100"
-      />
-      <MyButton
-        title="Browse All Countries"
-        color={colors.primary}
-        style={{ alignSelf: "center", width: "80%", marginTop: 20 }}
-        onPress={() => navigation.navigate("Listings")}
-      />
+
+      <View style={{ flex: 2, alignItems: "center" }}>
+        <ListCard
+          color="#f9c500"
+          style={{ width: "90%" }}
+          fontSize={24}
+          country="pakistan"
+          totalConfirmed="40,000"
+          totalRecovered="25,000"
+          totalDeaths="1100"
+        />
+      </View>
+
+      <View style={{ flex: 1 }}>
+        <MyButton
+          title="Browse All Countries"
+          color={colors.primary}
+          style={{ alignSelf: "center", width: "75%", marginTop: 40 }}
+          onPress={() => navigation.navigate("Listings")}
+        />
+      </View>
     </View>
   );
 }
@@ -34,8 +39,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   icon: {
-    height: 250,
+    height: "40%",
     width: "100%",
+    marginBottom: 20,
   },
 });
 

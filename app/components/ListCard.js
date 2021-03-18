@@ -6,29 +6,38 @@ import colors from "../config/colors";
 
 function ListCard({
   color,
-  title,
+  country,
   totalConfirmed,
   totalDeaths,
   totalRecovered,
+  fontSize = 20,
   style,
 }) {
   return (
     <View style={[styles.container, { backgroundColor: color }, style]}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, { fontSize: fontSize }]}>{country}</Text>
       <Seperator style={{ width: "90%" }} />
 
-      <Text style={[styles.text, { fontSize: 20, padding: 10 }]}>
+      <Text style={[styles.text, { fontSize: fontSize - 2, padding: 10 }]}>
         {totalConfirmed}
       </Text>
 
       <View style={[styles.row, { marginTop: 10 }]}>
-        <Text style={[styles.text, , { fontSize: 18 }]}>Deaths</Text>
-        <Text style={[styles.text, , { fontSize: 18 }]}>{totalDeaths}</Text>
+        <Text style={[styles.text, , { fontSize: fontSize - 4 }]}>
+          Total Deaths
+        </Text>
+        <Text style={[styles.text, , { fontSize: fontSize - 4 }]}>
+          {totalDeaths}
+        </Text>
       </View>
 
       <View style={styles.row}>
-        <Text style={[styles.text, , { fontSize: 18 }]}>Cured</Text>
-        <Text style={[styles.text, , { fontSize: 18 }]}>{totalRecovered}</Text>
+        <Text style={[styles.text, , { fontSize: fontSize - 4 }]}>
+          Total Cured
+        </Text>
+        <Text style={[styles.text, , { fontSize: fontSize - 4 }]}>
+          {totalRecovered}
+        </Text>
       </View>
     </View>
   );
@@ -36,7 +45,7 @@ function ListCard({
 
 const styles = StyleSheet.create({
   container: {
-    height: 220,
+    height: "100%",
     width: "40%",
     borderRadius: 25,
   },
@@ -46,7 +55,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   title: {
-    fontSize: 22,
     color: colors.white,
     fontWeight: "bold",
     alignSelf: "center",
