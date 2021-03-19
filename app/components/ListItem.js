@@ -14,25 +14,34 @@ const Seperator = () => {
   );
 };
 
-function ListItem({ country, totalConfirmed, totalRecovered, totalDeaths }) {
+function ListItem({
+  country,
+  totalConfirmed,
+  totalRecovered,
+  totalDeaths,
+  style,
+}) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Text style={styles.country} numberOfLines={1}>
         {country}
       </Text>
 
       <Seperator />
-      <Text style={[styles.text, { color: colors.primary }]}>
+      <Text style={[styles.text, { color: colors.primary }]} numberOfLines={1}>
         {totalConfirmed}
       </Text>
 
       <Seperator />
-      <Text style={[styles.text, { color: colors.danger }]}>
+      <Text style={[styles.text, { color: colors.danger }]} numberOfLines={1}>
         {totalRecovered}
       </Text>
 
       <Seperator />
-      <Text style={[styles.text, { color: colors.secondary }]}>
+      <Text
+        style={[styles.text, { color: colors.secondary }]}
+        numberOfLines={1}
+      >
         {totalDeaths}
       </Text>
     </View>
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    height: 50,
+    height: 40,
   },
   country: {
     fontWeight: "bold",

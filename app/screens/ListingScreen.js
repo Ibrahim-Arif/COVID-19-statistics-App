@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, FlatList, View, Text } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 
 import covidApi from "../api/covidApi";
 import ListCard from "../components/ListCard";
 import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
+import Seperator from "../components/Seperator";
 import Title from "../components/Title";
 import colors from "../config/colors";
 
@@ -43,7 +44,7 @@ function ListingScreen({}) {
 
   return (
     <Screen style={styles.container}>
-      <View style={{ flex: 2 }}>
+      <View style={{ height: "40%" }}>
         <View style={{ flex: 1, justifyContent: "center" }}>
           <Title>Top Countries</Title>
         </View>
@@ -56,33 +57,52 @@ function ListingScreen({}) {
             keyExtractor={(item) => item.Country}
             renderItem={({ item }) => (
               <ListCard
-                color={item.color}
-                fontSize={18}
                 country={item.Country}
                 totalConfirmed={item.Confirmed}
                 totalRecovered={item.Recovered}
                 totalDeaths={item.Deaths}
-                style={{ marginHorizontal: 10 }}
+                color={item.color}
+                fontSize={18}
+                style={{ marginHorizontal: 10, height: "90%" }}
               />
             )}
           />
         </View>
       </View>
 
-      <View style={{ flex: 3 }}>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.ID}
-          renderItem={({ item }) => (
-            <ListItem
-              country={item.Country}
-              totalConfirmed={item.TotalConfirmed}
-              totalDeaths={item.TotalDeaths}
-              totalRecovered={item.TotalRecovered}
-            />
-          )}
-          // style={{ alignSelf: "center" }}
-        />
+      <View style={{ height: "60%" }}>
+        <View
+          style={{
+            height: "20%",
+            justifyContent: "center",
+          }}
+        >
+          <Title>Statistics</Title>
+          <Seperator />
+
+          <ListItem
+            country="Location"
+            totalConfirmed="Active"
+            totalDeaths="Deaths"
+            totalRecovered="Recovered"
+          />
+          <Seperator />
+        </View>
+
+        <View style={{ height: "80%" }}>
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.ID}
+            renderItem={({ item }) => (
+              <ListItem
+                country={item.Country}
+                totalConfirmed={item.TotalConfirmed}
+                totalDeaths={item.TotalDeaths}
+                totalRecovered={item.TotalRecovered}
+              />
+            )}
+          />
+        </View>
       </View>
     </Screen>
   );
