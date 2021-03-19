@@ -7,8 +7,8 @@ const Seperator = () => {
     <View
       style={{
         height: "100%",
-        borderWidth: 0.6,
-        borderColor: colors.darkgrey,
+        borderWidth: 1,
+        borderColor: colors.lightgrey,
       }}
     />
   );
@@ -17,7 +17,9 @@ const Seperator = () => {
 function ListItem({ country, totalConfirmed, totalRecovered, totalDeaths }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.country}>{country}</Text>
+      <Text style={styles.country} numberOfLines={1}>
+        {country}
+      </Text>
 
       <Seperator />
       <Text style={[styles.text, { color: colors.primary }]}>
@@ -47,15 +49,16 @@ const styles = StyleSheet.create({
   country: {
     fontWeight: "bold",
     fontSize: 18,
-    width: "25%",
+    width: "30%",
     textTransform: "capitalize",
     color: colors.primary,
+    paddingHorizontal: 5,
   },
   text: {
     fontWeight: "bold",
-    fontSize: 18,
-    width: "25%",
-    paddingHorizontal: 10,
+    fontSize: 17,
+    width: "24%",
+    paddingHorizontal: 5,
   },
 });
 

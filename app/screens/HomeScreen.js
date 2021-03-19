@@ -25,7 +25,7 @@ function HomeScreen({ navigation }) {
       <View style={{ flex: 2, alignItems: "center" }}>
         <ListCard
           color="#f9c500"
-          style={{ width: "90%" }}
+          style={{ width: "90%", height: "100%" }}
           fontSize={24}
           country={"Pakistan"}
           totalConfirmed={data.Confirmed}

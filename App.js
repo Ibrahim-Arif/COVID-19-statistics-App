@@ -17,7 +17,7 @@ export default function App() {
         activeColor={colors.primary}
         barStyle={{ backgroundColor: colors.background }}
         inactiveColor={colors.primarylight}
-        initialRouteName="Home"
+        initialRouteName="Listings"
         shifting={true}
       >
         <Tab.Screen

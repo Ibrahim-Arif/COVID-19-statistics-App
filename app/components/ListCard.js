@@ -5,7 +5,7 @@ import Seperator from "../components/Seperator";
 import colors from "../config/colors";
 
 function ListCard({
-  color,
+  color = "dodgerblue",
   country,
   totalConfirmed,
   totalDeaths,
@@ -15,14 +15,19 @@ function ListCard({
 }) {
   return (
     <View style={[styles.container, { backgroundColor: color }, style]}>
-      <Text style={[styles.title, { fontSize: fontSize }]}>{country}</Text>
+      <View style={{ height: "30%", justifyContent: "center" }}>
+        <Text style={[styles.title, { fontSize: fontSize }]}>{country}</Text>
+      </View>
+
       <Seperator style={{ width: "90%" }} />
 
-      <Text style={[styles.text, { fontSize: fontSize - 2, padding: 10 }]}>
-        {totalConfirmed}
-      </Text>
+      <View style={{ height: "25%", justifyContent: "center" }}>
+        <Text style={[styles.text, { fontSize: fontSize - 2 }]}>
+          {totalConfirmed}
+        </Text>
+      </View>
 
-      <View style={[styles.row, { marginTop: 10 }]}>
+      <View style={[styles.row]}>
         <Text style={[styles.text, , { fontSize: fontSize - 4 }]}>
           Total Deaths
         </Text>
@@ -45,27 +50,26 @@ function ListCard({
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    width: "40%",
+    height: 200,
+    width: 180,
     borderRadius: 25,
   },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 12,
+    height: "15%",
+    paddingHorizontal: 10,
   },
   title: {
     color: colors.white,
     fontWeight: "bold",
-    alignSelf: "center",
-    padding: 10,
+    textAlign: "center",
     textTransform: "capitalize",
   },
   text: {
     color: colors.white,
     fontWeight: "bold",
     alignSelf: "center",
-    marginVertical: 5,
   },
 });
 
